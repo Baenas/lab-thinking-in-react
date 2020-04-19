@@ -21,7 +21,25 @@
 .App-intro {
   font-size: large;
 }
+.input, table{
+  width: 80%;
+  font-size: 30px;
+  height: 40px;
+  text-align: center;
+}
+.table{
+  padding-top: 60px;
+  width: 50%;
+  margin: 0 auto;
+}
+.tablehead td {
+  padding: 20px;
+  padding-bottom: 50px;
 
+}
+.tableelement td {
+  padding:10px
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -7,12 +7,14 @@ class FilterableProductTable extends Component {
     data: this.props.products,
     input: '',
     filtrada: '',
+    check: ''
   };
 
   componentWillMount() {
     this.setState({
       data: this.props.products,
     filtrada: this.state.data.data,
+    check: true
     });
   }
   updateState = (e) => {
@@ -36,6 +38,22 @@ class FilterableProductTable extends Component {
     }
   };
 
+estado = (statu) =>{
+console.log(statu)
+   if (this.state.input === '' && statu === true) {
+      const arr = this.props.products.data.filter((name) => {
+        return (
+          name.name.toLowerCase().indexOf(this.state.input.toLowerCase() && name.stocked === true ) !== -1
+        );
+      });
+
+      this.setState({
+        filtrada: [...arr],
+      });
+    }
+
+
+}
   render() {
     const { data, input, filtrada } = this.state;
 
@@ -43,10 +61,10 @@ class FilterableProductTable extends Component {
       <div>
         <h2>Iron Store</h2>
         <div>
-          <SearchBar updateState={this.updateState} />
+          <SearchBar checkbox={this.estado} updateState={this.updateState} />
         </div>
         <div>
-          <ProductTable filtrada={filtrada} value={input} products={data} />
+          <ProductTable  filtrada={filtrada} value={input} products={data} />
         </div>
       </div>
     );
